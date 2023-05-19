@@ -55,13 +55,29 @@ app.get("*", async (req, res) => {
   }
 });
 
-app.post("/upload", upload.single("image"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded.");
+app.post("/upload", (req, res) => {
+  if (!req.files || !req.files.image) {
+    return res.status(400).send("No image uploaded.");
   }
 
-  // File uploaded successfully, return the URL of the uploaded image
-  res.send(req.file.location);
+  const imageFile = req.files.image;
+
+  const params = {
+    Bucket: process.env.BUCKET,
+    Key: imageFile.name,
+    Body: fs.createReadStream(imageFile.path),
+    ACL: "public-read", // Set the access control list to allow public read access to the uploaded file
+  };
+
+  s3.upload(params, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to upload image.");
+    }
+
+    // File uploaded successfully, return the URL of the uploaded image
+    res.send(data.Location);
+  });
 });
 app.get("/", (req, res) => {
   res.send("hi this is 3rd commit ");
