@@ -14,7 +14,8 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const upload = multer({
   storage: multerS3({
