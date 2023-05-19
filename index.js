@@ -54,7 +54,9 @@ app.get("*", async (req, res) => {
     }
   }
 });
-
+app.post("/up1", (req, res) => {
+  console.log(req.files);
+});
 app.post("/upload", (req, res) => {
   if (!req.files || !req.files.image) {
     return res.status(400).send("No image uploaded.");
@@ -79,6 +81,7 @@ app.post("/upload", (req, res) => {
     res.send(data.Location);
   });
 });
+
 app.get("/", (req, res) => {
   res.send("hi this is 3rd commit ");
 });
