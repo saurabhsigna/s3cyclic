@@ -79,7 +79,7 @@
     "@aws-sdk/util-utf8-browser" "^3.0.0"
     tslib "^1.11.1"
 
-"@aws-sdk/abort-controller@^3.0.0", "@aws-sdk/abort-controller@3.329.0":
+"@aws-sdk/abort-controller@^3.0.0", "@aws-sdk/abort-controller@^3.329.0", "@aws-sdk/abort-controller@3.329.0":
   version "3.329.0"
   resolved "https://registry.npmjs.org/@aws-sdk/abort-controller/-/abort-controller-3.329.0.tgz"
   integrity sha512-hzrjPNQcJoSPe0oS20V5i98oiEZSM3mKNiR6P3xHTHTPI/F23lyjGZ+/CSkCmJbSWfGZ5sHZZcU6AWuS7xBdTw==
