@@ -58,7 +58,7 @@ app.get("*", async (req, res) => {
 app.post("/up1", (req, res) => {
   console.log(req.files);
   console.log(req.body);
-  res.send("hi hello", req.body);
+  res.send(`hi hello ${req.body}`);
 });
 app.post("/upload", (req, res) => {
   if (!req.body || !req.body.image) {
