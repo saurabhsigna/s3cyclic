@@ -15,7 +15,7 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 const upload = multer({
   storage: multerS3({
@@ -58,6 +58,7 @@ app.get("*", async (req, res) => {
 app.post("/up1", (req, res) => {
   console.log(req.files);
   console.log(req.body);
+  res.send("hi hello", req.body);
 });
 app.post("/upload", (req, res) => {
   if (!req.body || !req.body.image) {
