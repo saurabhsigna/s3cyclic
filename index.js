@@ -1,12 +1,13 @@
 const express = require("express");
 const AWS = require("aws-sdk");
 const bodyParser = require("body-parser");
-const multer = require('multer');
-const multerS3 = require('multer-s3');
+const multer = require("multer");
+const multerS3 = require("multer-s3");
 const app = express();
 
 AWS.config.update({
   accessKeyId: process.env.ACCESS_KEY,
+
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
   region: process.env.AWS_REGION,
 });
@@ -54,15 +55,17 @@ app.get("*", async (req, res) => {
   }
 });
 
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post("/upload", upload.single("image"), (req, res) => {
   if (!req.file) {
-    return res.status(400).send('No file uploaded.');
+    return res.status(400).send("No file uploaded.");
   }
 
   // File uploaded successfully, return the URL of the uploaded image
   res.send(req.file.location);
 });
-
+app.get("/", (req, res) => {
+  res.send("hi this is 3rd commit ");
+});
 
 // curl -i -XPUT --data '{"k1":"value 1", "k2": "value 2"}' -H 'Content-type: application/json' https://some-app.cyclic.app/myFile.txt
 app.put("*", async (req, res) => {
