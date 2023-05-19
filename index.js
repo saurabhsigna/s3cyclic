@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: process.env.BUCKET_NAME,
+    bucket: process.env.BUCKET,
     acl: "public-read", // Set the access control list to allow public read access to the uploaded files
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
