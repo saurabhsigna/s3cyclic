@@ -56,19 +56,20 @@ app.get("*", async (req, res) => {
 });
 app.post("/up1", (req, res) => {
   console.log(req.files);
+  console.log(req.body);
 });
 app.post("/upload", (req, res) => {
   if (!req.body || !req.body.image) {
-    return res.status(400).send('No image uploaded.');
+    return res.status(400).send("No image uploaded.");
   }
 
-  const base64Data = req.body.image.replace(/^data:image\/\w+;base64,/, '');
-  const buffer = Buffer.from(base64Data, 'base64');
+  const base64Data = req.body.image.replace(/^data:image\/\w+;base64,/, "");
+  const buffer = Buffer.from(base64Data, "base64");
 
   const params = {
     Bucket: process.env.BUCKET,
-    Key:"image"+Math.floor(Math.random()*23344)+".jpg",
-    Body:buffer,
+    Key: "image" + Math.floor(Math.random() * 23344) + ".jpg",
+    Body: buffer,
     ACL: "public-read", // Set the access control list to allow public read access to the uploaded file
   };
 
