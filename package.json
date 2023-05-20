@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "node index.js",
+    "start": "cd s3next && npm run build",
     "build": "echo This is a static template, there is no bundler or bundling involved!"
   },
   "repository": {
